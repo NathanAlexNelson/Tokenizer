@@ -21,16 +21,23 @@ def tokenize(code):
     }
     return tokens
 
-def printOutput(code): 
+def printOutput(code):
     # Output for part 4.
     print("Output1 - Code after removing excess space and comments:")
     print(code)
     
+    # Sort of complicated looking but this is where the code gets printed in tabular form
+    print("\nOutput2 - Tokenized code in tabular form:")
+    print("Category\tTokens")
+    for category, tokens in code.items():
+        print(f"{category}\t{', '.join(tokens)}")
+
 def main(fileInput):
     code = readInputFile(fileInput)
     processedCode = simplifyCode(code)
+    tokenizedCode = tokenize(processedCode)
+    printOutput(tokenizedCode)
 
-# Simple if statement to make sure the file matches input so things don't break
 if __name__ == "__main__":
     fileInput = "fileInput.txt"  # Replace with the path to your input file
     main(fileInput)
