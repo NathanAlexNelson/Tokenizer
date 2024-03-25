@@ -1,8 +1,14 @@
 import re
 
-def readInputFile(filePath): # Turns file into text or 'reads' the file
+def readInputFile(filePath):
+    with open(filePath, 'r') as file:
+        return file.read()
 
-def simplifyCode(code): # We need to remove comments and spaces here
+def simplifyCode(code):
+    # Remove comments and spaces
+    code = re.sub(r'#.*?\n', '\n', code)
+    code = re.sub(r'\s+', ' ', code)
+    return code.strip()
 
 def tokenize(code):
     # Code then gets broken down here to tokenized definitions
@@ -15,9 +21,14 @@ def tokenize(code):
     }
     return tokens
 
-def printOutput(code): # Output for part 4 needs to be simplified code
-
-def main(fileInput): # Call defs here to make code easy to understand
+def printOutput(code): 
+    # Output for part 4.
+    print("Output1 - Code after removing excess space and comments:")
+    print(code)
+    
+def main(fileInput):
+    code = readInputFile(fileInput)
+    processedCode = simplifyCode(code)
 
 # Simple if statement to make sure the file matches input so things don't break
 if __name__ == "__main__":
